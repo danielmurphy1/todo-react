@@ -18,10 +18,6 @@
 .env.test.local
 .env.production.local
 .eslintcache
-<<<<<<< HEAD
-
-=======
->>>>>>> create-components
 
 npm-debug.log*
 yarn-debug.log*
