@@ -12,17 +12,17 @@ class App extends React.Component {
     this.state = {
       todos: [
         {
-          id: Math.random,
+          id: Math.random(),
           todoText: "Test 1",
           isChecked: false
         }, 
         {
-          id: Math.random,
+          id: Math.random(),
           todoText: "Test 2",
           isChecked: false
         }, 
         {
-          id: Math.random,
+          id: Math.random(),
           todoText: "Test 3",
           isChecked: false
         }
@@ -48,9 +48,9 @@ class App extends React.Component {
   }
 
   handleChange(event){
-    const {name, value} = event.target;
+    const {name, value, checked, type} = event.target;
     this.setState({
-      [name] : value
+      [name] : type === "checkbox" ? checked : value
     })
   }  
 
