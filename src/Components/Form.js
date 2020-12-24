@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Form (){
+function Form (props){
     return(
-        <form className="container">
+        <form className="container" onSubmit={props.addExpense}>
             <div className="input-group">
-                <input type="text" name="todoText" className="form-control" placeholder="Enter To Do Item Here"></input>
-                <button className="btn btn-dark ml-3" type="submit">Add ToDo</button>
+                <input type="text" name="todoText" value={props.state.toDoText} onChange={props.handleChange} className="form-control" placeholder="Enter To Do Item Here"></input>
+                <button className="btn btn-dark ml-3" type="submit" >Add ToDo</button>
             </div>
         </form>
     )

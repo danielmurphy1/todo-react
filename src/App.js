@@ -10,17 +10,56 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      todos: ["Test 1", "Test 2", "Test 3"]
+      todos: [
+        {
+          id: Math.random,
+          todoText: "Test 1",
+          isChecked: false
+        }, 
+        {
+          id: Math.random,
+          todoText: "Test 2",
+          isChecked: false
+        }, 
+        {
+          id: Math.random,
+          todoText: "Test 3",
+          isChecked: false
+        }
+      ]
     }
+    this.handleChange = this.handleChange.bind(this);
+    this.addTodo = this.addTodo.bind(this);
   }
 
+  addTodo(event){
+    event.preventDefault();
+
+    let newTodo = {
+      id: Math.random, 
+      todoText: this.state.todoText, 
+      isChecked: false
+    }
+    this.setState({
+      todos: this.state.todos.length >= 1 ? [...this.state.todos, newTodo] : [newTodo],
+      id: "", 
+      isChecked: false
+    })
+  }
+
+  handleChange(event){
+    const {name, value} = event.target;
+    this.setState({
+      [name] : value
+    })
+  }  
 
   render(){
     return (
       <div className="App">
         <Header />
-        <Form />
-        <List todos={this.state.todos}/>
+        <Form addTodo={this.addTodo} state={this.state} handleChange={this.handleChange}/>
+        <List todos={this.state.todos} handleChange={this.handleChange}/>
       </div>
     );
   }
